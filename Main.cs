@@ -96,9 +96,17 @@ namespace zcMod
                         }
                     }
                 }
-                if (Input.GetKeyUp(KeyCode.Home))//暴力模式全图锁
+                if (Input.GetKeyUp(KeyCode.Home))
                 {
                     shownpc = !shownpc;
+                }
+                if (Input.GetKey(KeyCode.F))
+                {
+                    shownpc = true;
+                }
+                if (Input.GetKeyUp(KeyCode.F))
+                {
+                    shownpc = false;
                 }
                 if (Input.GetKeyUp(KeyCode.Delete))
                 {
@@ -136,7 +144,7 @@ namespace zcMod
                 {
                     aimEnabled = !aimEnabled;
                 }
-                if ((aimEnabled && !Input.GetKey(KeyCode.F)) || (!aimEnabled && Input.GetKey(KeyCode.F)))//按F键临时开关自瞄(请按个人喜好修改)
+                if ((aimEnabled && !Input.GetKey(KeyCode.LeftControl)) || (!aimEnabled && Input.GetKey(KeyCode.LeftControl)))//按F键临时开关自瞄(请按个人喜好修改)
                 {
                     List<NewPlayerObject> monsters = NewPlayerManager.GetMonsters();
                     if (monsters != null)
