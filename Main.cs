@@ -30,6 +30,7 @@ namespace zcMod
         public static bool showallobjinfo = false;
         public static bool limitangle = true;
         public static bool shownpc = false;
+        public static bool aimEnabled = true;
         public static bool imreload = false;
         public override void OnApplicationStart() // Runs after Game Initialization.
         {
@@ -131,7 +132,11 @@ namespace zcMod
                 }
                 
                 //if (Input.GetMouseButton(1)) 
-                if (Input.GetKey(KeyCode.F))//按F键自瞄(请按个人喜好修改)
+                if (Input.GetKeyUp(KeyCode.T))
+                {
+                    aimEnabled = !aimEnabled;
+                }
+                if ((aimEnabled && !Input.GetKey(KeyCode.F)) || (!aimEnabled && Input.GetKey(KeyCode.F)))//按F键临时开关自瞄(请按个人喜好修改)
                 {
                     List<NewPlayerObject> monsters = NewPlayerManager.GetMonsters();
                     if (monsters != null)
